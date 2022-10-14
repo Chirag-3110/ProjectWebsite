@@ -1,0 +1,69 @@
+.Header {
+    /* border: 1px solid rgb(148, 96, 96); */
+    margin: auto;
+    width: auto;
+    /* height: "100%"; */
+    width: "100%";
+    justify-content: center;
+    /* margin: 50%; */
+    margin: 10%;
+}
+
+.MainCard {
+    /* border: 3px solid red */
+    width: 20%;
+    border-radius: 10px;
+    background-color: #ffe7cb;
+    box-shadow: 4px 1px 10px 3px #c5bfbf;
+    /* display: flex; */
+    /* flex-direction: row; */
+
+}
+
+.innerMainCard {
+    /* border: 1px solid black; */
+    padding: 10px;
+    justify-content: center;
+}
+
+.Image {
+    width: 90%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.para {
+    width: 100%;
+    /* border: 1px solid red; */
+    height: auto;
+    /* height: 60px; */
+    padding: 10px;
+    align-self: center;
+    text-align: center;
+}
+
+.btn {
+    width: 80%;
+    border-color: #ffae4f;
+    padding: 10px;
+    border: 1px solid #ffae4f;
+    border-radius: 7px;
+    background-color: white;
+    font-size: 15px;
+    /* border-color: #6d3f0b; */
+}
+
+.btn:hover {
+    background-color: #ffae4f;
+    border: 0px solid white;
+}
+
+.h3 {
+    font-size: 25px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+
+}
