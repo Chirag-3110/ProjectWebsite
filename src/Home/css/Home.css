@@ -6,3 +6,38 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
+.title-header{
+    color:#FF7A00;
+    font-size: 60px;
+    width: 60%;
+    text-align: left;
+    /* margin-left: 50px; */
+}
+.start-button{
+    width: 200px;
+    height: 50px;
+    background-color: #FF7A00;
+    border-radius: 100px;
+    border: 2px solid #f3cba6;
+    color: white;
+    font-weight: bold;
+}
+.title-main-container{
+    width: 80%;
+    display: flex;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+}
+.title-div{
+    /* background-color: red; */
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px; */
+}
+.title-image{
+    width: 60%;
+    height: 50%;
+    border-radius: 10px;
+}
