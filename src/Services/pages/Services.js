@@ -32,6 +32,7 @@ function About() {
             </div>
           </div>
         </div>
+
         <div className="innerMainPortion" style={{ backgroundColor: "#ffe7cb", width: "58%" }}>
 
           <div>
@@ -39,44 +40,32 @@ function About() {
             <h2>Website</h2>
             <div className="mainBoxOption">
               <div className="BoxOption">
-                <label for="cars" className="InfoText"> Frontend Tech</label>
+                <label for="Frontend" className="InfoText"> Frontend Tech</label>
 
                 <select id="cars" className="Option">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
+                  <option value="React">React</option>
+                  <option value="NormalWeb">HTML,CSS,Javascript</option>
+                  <option value="Bootstrap">Bootstrap</option>
+                  <option value="ReactMUI">React with material UI</option>
                 </select>
               </div>
               <div className="BoxOption">
-                <label for="cars" className="InfoText"> Backend Tech</label>
+                <label for="Backend" className="InfoText"> Backend Tech</label>
 
                 <select id="cars" className="Option">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
+                  <option value="AWS">AWS</option>
+                  <option value="Firebase">Firebase</option>
+                  {/* <option value="opel">Opel</option>
+                  <option value="audi">Audi</option> */}
                 </select>
               </div>
               <div className="BoxOption">
                 <label for="cars" className="InfoText"> Project Duration</label>
-
-                <select id="cars" className="Option">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
-                </select>
+                <input placeholder="hi" style={{ borderRadius: "6px", width: "18.5%", height: "30px" }} />
               </div>
               <div className="BoxOption">
                 <label for="cars" className="InfoText"> Project Amount</label>
-
-                <select id="cars" className="Option">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
-                </select>
+                <input placeholder="hi" style={{ borderRadius: "6px", width: "18.5%", height: "30px" }} />
               </div>
               <div className="Sidebtn">
 
