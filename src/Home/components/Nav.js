@@ -17,8 +17,13 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import {Link} from 'react-router-dom'
-const pages = ['Home','Feedback','Services','Call Us'];
-
+// const pages = ['Home','Feedback','Services','Call Us'];
+const pages = [
+  {name:'Home',path:"/"},
+  {name:'Feedback',path:"/"},
+  {name:'Services',path:"service"},
+  {name:'Call Us',path:"/"},
+];
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -136,8 +141,8 @@ const ResponsiveAppBar = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center" >
-                    <Link styles={{textDecoration:"none",color:"white"}}to={'/${page}'}>
-                    {page}
+                    <Link styles={{textDecoration:"none",color:"white"}}to={page.path}>
+                    {page.name}
                     </Link>
                     </Typography>
                 </MenuItem>
@@ -170,8 +175,8 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block',margin:"15px" }}
               >
-                 <Link style={{textDecoration:"none",color:"white"}} to={'/${page}'}>
-                    {page}
+                 <Link style={{textDecoration:"none",color:"white"}} to={page.path}>
+                    {page.name}
                     </Link>
               </Button>
             ))}
