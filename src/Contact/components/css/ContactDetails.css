@@ -49,3 +49,16 @@
     font-weight: bolder;
     margin: 20px 0px;
 }
+
+@media screen and (min-width: 300px) and (max-width:700px) {
+
+    .Name-div {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .Post-div {
+        font-size: 18px;
+        font-weight: 400;
+    }
+}

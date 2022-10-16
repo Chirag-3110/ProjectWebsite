@@ -11,7 +11,6 @@
 
 
 .contact-div {
-    /* border: 1px solid red; */
     margin: auto;
     width: auto;
 
@@ -30,7 +29,6 @@
 .input-form {
     border: 1px solid rgb(0, 0, 0);
     width: 60%;
-    /* height: 7%; */
     font-size: 22px;
     margin: 1.2% 0px;
     border-radius: 8px;
@@ -55,6 +53,41 @@
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-    /* box-shadow: 5px 5px 5px 5px lightgray; */
 
+}
+
+@media screen and (min-width: 300px) and (max-width:700px) {
+    .WholeContactDiv {
+        display: block;
+        margin: 1% 10px;
+    }
+
+    .Main-div {
+        width: 80%;
+        margin: 20px auto;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width:600px) {
+    .contact-btn {
+        border: 1px solid orange;
+        padding: 10px;
+        background-color: #FF7A00;
+        color: white;
+        border-radius: 8px;
+        font-size: 20px;
+        margin: 2% auto;
+        width: 70%;
+    }
+
+    .input-form {
+        border: 1px solid rgb(0, 0, 0);
+        width: 80%;
+        /* height: 7%; */
+        font-size: 17px;
+        margin: 1.2% 0px;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #D9D9D9;
+    }
 }

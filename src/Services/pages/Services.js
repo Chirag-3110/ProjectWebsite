@@ -3,9 +3,8 @@ function About() {
   return (
     <>
       <div className="TopMain">
-        <div className="Servicebox">
-
-          <p className="InnerTopMain">Services</p>
+        <div className="contact-div">
+          <button className="contact-btn">Services</button>
         </div>
       </div>
       <div className="MainPortion">
@@ -33,7 +32,7 @@ function About() {
           </div>
         </div>
 
-        <div className="innerMainPortion" style={{ backgroundColor: "#ffe7cb", width: "58%" }}>
+        <div className="innerMainPortion1" >
 
           <div>
             <h3>Technologies you want</h3>

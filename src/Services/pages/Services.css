@@ -2,8 +2,23 @@
     width: 95%;
     height: 230px;
     max-height: 50%;
-    /* height: 85%; */
     border-radius: 10px;
+}
+
+.contact-div {
+    margin: auto;
+    width: auto;
+}
+
+.contact-btn {
+    border: 1px solid orange;
+    padding: 15px;
+    background-color: #FF7A00;
+    color: white;
+    border-radius: 8px;
+    font-size: 27px;
+    margin: 2% 10px;
+    width: 30%;
 }
 
 .para {
@@ -52,23 +67,36 @@
     margin: auto;
     width: auto;
     width: 41%;
-    /* border: 1px solid black; */
     justify-content: center;
     align-content: center;
     align-self: center;
     text-align: center;
     border-radius: 15px;
+
+}
+
+.innerMainPortion1 {
+    margin: auto;
+    width: auto;
+    width: 55%;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    text-align: center;
+    border-radius: 15px;
+    background-Color: #ffe7cb;
+    box-shadow: 3px 3px 15px 5px lightgray;
 }
 
 .Card {
     margin: auto;
     width: auto;
     width: 42%;
-    /* border: 1px solid black; */
     padding: 1% 3% 2% 3%;
     border-radius: 10px;
     background-color: #ffe7cb;
     justify-content: center;
+    box-shadow: 3px 3px 15px 5px lightgray;
 
 }
 
@@ -82,7 +110,6 @@
     margin: auto;
     width: auto;
     justify-content: center;
-    /* border: 1px solid red; */
     padding: 2%
 }
 
@@ -111,7 +138,6 @@
 .TopMain {
     width: 100%;
     border-radius: 9px;
-    /* background-color: #ffae4f; */
 }
 
 .InnerTopMain {
@@ -127,5 +153,77 @@
     background-color: #ffae4f;
     width: 15%;
     border-radius: 9px;
-    /* padding: 1px 0px 1px 0px; */
+}
+
+@media screen and (min-width: 800px) and (max-width:1000px) {
+    .innerMainPortion {
+        width: 45%;
+    }
+
+    .Card {
+        width: 66%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width:800px) {
+    .innerMainPortion {
+        width: 45%;
+    }
+
+    .Card {
+        width: 66%;
+    }
+
+    .Image {
+        width: 95%;
+        height: 200px;
+    }
+
+    .btn {
+        width: 90%;
+    }
+
+    .Sidebtn {
+
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width:600px) {
+    .innerMainPortion {
+        width: 75%;
+    }
+
+    .Card {
+        width: 80%;
+    }
+
+    .Image {
+        width: 95%;
+        height: 200px;
+    }
+
+    .btn {
+        width: 90%;
+    }
+
+    .Sidebtn {
+
+        width: 80%;
+    }
+
+    .MainPortion {
+        display: block;
+    }
+
+    .innerMainPortion1 {
+        margin: auto;
+        width: auto;
+        width: 63%;
+        padding: 10px 0px 2px 0px;
+    }
+
+    .contact-btn {
+        width: 60%;
+    }
 }

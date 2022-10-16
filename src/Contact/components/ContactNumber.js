@@ -5,7 +5,7 @@ const ContactNumber = (props) => {
         <>
             <div className="Contact-Maindiv" >
                 <div className='Img-div'>
-                    <img src={props.img} className='AdminImg' />
+                    <img src={props.img} className='AdminImg' alt='' />
                 </div>
                 <div style={{ width: "68%", textAlign: "left", padding: "5px" }}>
                     <div className='Name-div'>{props.Name}</div>

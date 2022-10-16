@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,12 +8,9 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import InputBase from '@mui/material/InputBase';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom'
 // const pages = ['Home','Feedback','Services','Call Us'];
@@ -68,22 +64,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   return (
     <AppBar position="static" style={{ backgroundColor: "#FF7A00", borderRadius: "10px" }}>
@@ -98,7 +87,7 @@ const ResponsiveAppBar = () => {
             sx={{
               mr: 8,
               display: { xs: 'none', md: 'flex' },
-              display: 'flex',
+              // display: 'flex',
               fontFamily: 'monospace',
               fontWeight: 700,
 
