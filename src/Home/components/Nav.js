@@ -22,7 +22,7 @@ const pages = [
   { name: 'Home', path: "/" },
   { name: 'Feedback', path: "/" },
   { name: 'Services', path: "service" },
-  { name: 'Call Us', path: "Contact" },
+  { name: 'Call Us', path: "contact" },
 ];
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
