@@ -16,55 +16,55 @@ import InputBase from '@mui/material/InputBase';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // const pages = ['Home','Feedback','Services','Call Us'];
 const pages = [
-  {name:'Home',path:"/"},
-  {name:'Feedback',path:"/"},
-  {name:'Services',path:"service"},
-  {name:'Call Us',path:"/"},
+  { name: 'Home', path: "/" },
+  { name: 'Feedback', path: "/" },
+  { name: 'Services', path: "service" },
+  { name: 'Call Us', path: "Contact" },
 ];
 const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  }));
-  
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }));
-  
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
-          width: '20ch',
-        },
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
       },
     },
-  }));
+  },
+}));
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -86,22 +86,22 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static" style={{backgroundColor:"#FF7A00",borderRadius:"10px"}}>
+    <AppBar position="static" style={{ backgroundColor: "#FF7A00", borderRadius: "10px" }}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
-         
+
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
             sx={{
-              mr:8,
+              mr: 8,
               display: { xs: 'none', md: 'flex' },
-               display:'flex' ,
+              display: 'flex',
               fontFamily: 'monospace',
               fontWeight: 700,
-             
+
               color: 'inherit',
               textDecoration: 'none',
             }}
@@ -141,15 +141,15 @@ const ResponsiveAppBar = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center" >
-                    <Link styles={{textDecoration:"none",color:"white"}}to={page.path}>
-                    {page.name}
+                    <Link styles={{ textDecoration: "none", color: "white" }} to={page.path}>
+                      {page.name}
                     </Link>
-                    </Typography>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          
+
           <Typography
             variant="h5"
             noWrap
@@ -161,7 +161,7 @@ const ResponsiveAppBar = () => {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-            
+
               color: 'inherit',
               textDecoration: 'none',
             }}
@@ -173,17 +173,17 @@ const ResponsiveAppBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block',margin:"15px" }}
+                sx={{ my: 2, color: 'white', display: 'block', margin: "15px" }}
               >
-                 <Link style={{textDecoration:"none",color:"white"}} to={page.path}>
-                    {page.name}
-                    </Link>
+                <Link style={{ textDecoration: "none", color: "white" }} to={page.path}>
+                  {page.name}
+                </Link>
               </Button>
             ))}
           </Box>
 
-        
-           <Search>
+
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
