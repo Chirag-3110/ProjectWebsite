@@ -1,37 +1,45 @@
 import "./Services.css"
+import TitleContainer from '../../Home/components/HomeTitle'
+const card_details=[
+  {
+    id:1,type:"web",imagePath:"https://www.uxweb-design.com/wp-content/uploads/2019/10/Web-design-1.jpg",name:"website"
+  },
+  {
+    id:2,type:"app",imagePath:"https://www.uxweb-design.com/wp-content/uploads/2019/10/Web-design-1.jpg",name:"App"
+  },
+  {
+    id:3,type:"portfolio",imagePath:"https://www.uxweb-design.com/wp-content/uploads/2019/10/Web-design-1.jpg",name:"Portfolio"
+  },
+]
 function About() {
   return (
-    <>
+    <div style={{height:'100vh'}}>
       <div className="TopMain">
-        <div className="contact-div">
-          <button className="contact-btn">Services</button>
-        </div>
+        <TitleContainer title="Services"/>
       </div>
       <div className="MainPortion">
-        <div className="innerMainPortion" style={{ padding: "25px 0px 25px 0px" }}>
-
-          <div className="Card">
-            <div className="MainImage">
-              <img
-                src="https://www.uxweb-design.com/wp-content/uploads/2019/10/Web-design-1.jpg"
-                alt="car"
-                className='Image'
-
-              />
+        <div className='scrool-container'>    
+        {
+          card_details.map((item)=>(
+            <div className="innerMainPortion" style={{ padding: "25px 0px 25px 0px" }}>
+              <div className="Card">
+                <div className="MainImage">
+                  <img
+                    src={item.imagePath}
+                    alt="car"
+                    className='Image'
+                  />
+                </div>
+                <div>
+                  <h3 className="h3">{item.name}</h3>
+                  <p className="para">{item.name} is the designed</p>
+                  <button className="btn">Book Now</button>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="h3">Website</h3>
-              <p className="para">Website is the designed
-              </p>
-              {/* <div style={{ padding: "10px", height: "1%", border: "1px solid green" }}> */}
-
-              <button className="btn">Book Now</button>
-              {/* </div> */}
-
-            </div>
-          </div>
+          ))
+        }    
         </div>
-
         <div className="innerMainPortion1" >
 
           <div>
@@ -74,7 +82,6 @@ function About() {
           </div>
         </div>
       </div>
-
-    </>
+    </div>
   );
 } export default About

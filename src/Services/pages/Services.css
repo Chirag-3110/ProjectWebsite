@@ -66,7 +66,7 @@
 .innerMainPortion {
     margin: auto;
     width: auto;
-    width: 41%;
+    width: 100%;
     justify-content: center;
     align-content: center;
     align-self: center;
@@ -91,7 +91,7 @@
 .Card {
     margin: auto;
     width: auto;
-    width: 42%;
+    width: 90%;
     padding: 1% 3% 2% 3%;
     border-radius: 10px;
     background-color: #ffe7cb;
@@ -153,6 +153,16 @@
     background-color: #ffae4f;
     width: 15%;
     border-radius: 9px;
+}
+.scrool-container{
+    width: 21%;
+    height:500px;
+    background-color: #F2EFEF;
+    border-radius: 20px;
+    box-shadow:5px 5px 5px 5px rgba(138, 138, 138, 0.2);
+    border: 2px solid rgb(224, 224, 224);
+    padding: 10px;
+    overflow: scroll;
 }
 
 @media screen and (min-width: 800px) and (max-width:1000px) {
