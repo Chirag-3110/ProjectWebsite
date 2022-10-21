@@ -17,7 +17,7 @@ import LocalMallIcon from '@mui/icons-material/LocalMall';
 // const pages = ['Home','Feedback','Services','Call Us'];
 const pages = [
   { name: 'Home', path: "/" },
-  { name: 'Feedback', path: "/" },
+  { name: 'Feedback', path: "Feedback" },
   { name: 'Services', path: "service" },
   { name: 'Call Us', path: "contact" },
 ];
