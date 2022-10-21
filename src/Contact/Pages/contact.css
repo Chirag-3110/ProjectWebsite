@@ -13,17 +13,18 @@
 .contact-div {
     margin: auto;
     width: auto;
-
+    width: 70%
 }
 
 .contact-btn {
     border: 1px solid orange;
-    padding: 15px;
+    padding: 10px;
     background-color: #FF7A00;
     color: white;
     border-radius: 8px;
     font-size: 27px;
     margin: 2% 10px;
+    /* width: "30%"; */
 }
 
 .input-form {
