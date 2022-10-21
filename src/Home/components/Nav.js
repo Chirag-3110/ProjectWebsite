@@ -13,6 +13,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom'
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 // const pages = ['Home','Feedback','Services','Call Us'];
 const pages = [
   { name: 'Home', path: "/" },
@@ -85,7 +86,7 @@ const ResponsiveAppBar = () => {
             component="a"
             href="/"
             sx={{
-              mr: 8,
+              mr: 110,
               display: { xs: 'none', md: 'flex' },
               // display: 'flex',
               fontFamily: 'monospace',
@@ -157,12 +158,12 @@ const ResponsiveAppBar = () => {
           >
             ProjectHub
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "right" }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block', margin: "15px" }}
+                sx={{ my: 2, color: 'white', display: 'block', margin: "15px", textAlign: "right" }}
               >
                 <Link style={{ textDecoration: "none", color: "white" }} to={page.path}>
                   {page.name}
@@ -170,9 +171,13 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
+          <Box style={{ margin: "1px", position: "absolute", right: "-5%" }}>
+
+            <LocalMallIcon fontSize='large' />
+          </Box>
 
 
-          <Search>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -180,7 +185,7 @@ const ResponsiveAppBar = () => {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search> */}
         </Toolbar>
       </Container>
     </AppBar>
