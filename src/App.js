@@ -11,20 +11,20 @@ import Contact from './Contact/Pages/Contact'
 import Feedback from "./Feedback/Pages/Feedback";
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Login/>} />
-    </Routes>
-    // <div className="App">
-    //   <div style={{ padding: 10 }}>
-    //     <ResponsiveAppBar />
-    //   </div>
-    //   <Routes>
-    //     <Route path="/" element={<Home />} />
-    //     <Route path="service" element={<Services />} />
-    //     <Route path="contact" element={<Contact />} />
-    // <Route path="Feedback" element={<Feedback />} />
-    //   </Routes>
-    // </div>
+    // <Routes>
+    //   <Route path="/" element={<Login/>} />
+    // </Routes>
+    <div className="App">
+      <div style={{ padding: 10 }}>
+        <ResponsiveAppBar />
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="service" element={<Services />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="Feedback" element={<Feedback />} />
+      </Routes>
+    </div>
   );
 }
 export default App

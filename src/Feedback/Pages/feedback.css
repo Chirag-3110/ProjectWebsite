@@ -1,0 +1,27 @@
+.FeedbackBox {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+}
+
+.ImageBox {
+    width: 50%
+}
+
+.FormCard {
+    width: 49%
+}
+
+@media screen and (min-width: 300px) and (max-width:700px) {
+    .FeedbackBox {
+        display: block;
+    }
+
+    .ImageBox {
+        display: none;
+    }
+
+    .FormCard {
+        width: 100%
+    }
+}
