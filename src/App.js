@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 //Auth pages
 import Login from "./Auth/Login";
+import Signup from "./Auth/Signup";
 //other pages
 import Home from "./Home/pages/Home";
 import Services from "./Services/pages/Services";
@@ -24,6 +25,8 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="Feedback" element={<Feedback />} />
       </Routes>
+      <Login/>
+      <Signup/>
     </div>
   );
 }
