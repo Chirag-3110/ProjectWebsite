@@ -1,0 +1,88 @@
+.item-card{
+    background-color: #FFE7CB;
+    width: 80%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 20px;
+    /* height: 400px; */
+    display: flex;
+}
+.Image{
+    width: 40%;
+    height:390px;
+}
+.info-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+    width: 50%;
+}
+.items-all{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.items{
+    display: flex;
+}
+.main-values{
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     margin-left: 30px;
+}
+.item-label{
+   background-color: #FF8E0A;
+   padding: 10px;
+   border-radius: 100px;
+   border: 2px solid white;
+   margin: 10px;
+   color:"white";
+   font-size: 10px;
+   color:white
+}
+.request-button{
+    width: 180px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid #FF8E0A;
+    border-radius: 5px;
+    color:#FF8E0A;
+    font-weight: bold;
+}
+.cancel-button{
+    width: 180px;
+    height: 40px;
+    background-color: #FF8E0A;
+    border: 2px solid white;
+    border-radius: 5px;
+    color:white;
+    font-weight: bold;
+}
+.edit-button{
+    width: 120px;
+    height: 40px;
+    background-color: #FF8E0A;
+    border: 2px solid white;
+    border-radius: 50px;
+    color:white;
+    font-weight: bold;
+    font-size: 10px;
+}
+.btn-div{
+    margin-left: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.title-div{
+    margin-left: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}

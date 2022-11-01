@@ -21,6 +21,7 @@ const pages = [
   { name: 'Services', path: "service" },
   { name: 'Call Us', path: "contact" },
   { name: 'Orders', path: "OrderPage" },
+  // { name: 'Cart', path: "Cart" },
 ];
 
 
@@ -48,7 +49,7 @@ const ResponsiveAppBar = () => {
             component="a"
             href="/"
             sx={{
-              mr: 100,
+              mr: 50,
               display: { xs: 'none', md: 'flex' },
               // display: 'flex',
               fontFamily: 'monospace',
@@ -120,7 +121,7 @@ const ResponsiveAppBar = () => {
           >
             ProjectHub
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "right" }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "right" ,marginRight:"3%"}}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -133,9 +134,10 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-          <Box style={{ margin: "1px", position: "absolute", right: "-5%" }}>
-
-            <LocalMallIcon fontSize='large' />
+          <Box style={{ margin: "5px", position: "absolute", right: "0px" }}>
+                <Link style={{ textDecoration: "none", color: "white" }} to={'/Cart'}>
+                  <LocalMallIcon fontSize='large' />
+                </Link>
           </Box>
 
 
