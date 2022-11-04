@@ -13,11 +13,13 @@ import Feedback from "./Feedback/Pages/Feedback";
 import OrderPage from "./OrderPage/OrderPage";
 import Cart from "./Cart/Cart";
 import Address from "./Address/Address";
+import ForgotPassword from "./Auth/ForgotPassword";
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Signup />} />
       <Route path="/log" element={<Login />} />
+      <Route path="/ForgotPassword" element={<ForgotPassword />} />
     </Routes>
     // <div className="App">
     //   <div style={{ padding: 10 }}>
