@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import AppLogo from '../Assets/AppLogo.png';
-import AuthImage from '../Assets/AuthImage.png';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import {  doc, setDoc  } from "firebase/firestore";
+import { auth , db } from "../firebase";
 import './Signup.css';
 
-function Signup() {
-    const [email, setemail] = useState(null)
-    const [password, setpassword] = useState(null)
-    const newUser = async () => {
-        console.log(email)
-        console.log(password)
+const Signup=()=>{
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
+    const createNewUser = async () => {
         try {
             createUserWithEmailAndPassword(auth,email,password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user.uid)
+                const userRef = doc(db, 'Users', user.uid)
+                setDoc(userRef,{
+                    name:"chirag"
+                }).then(()=>{
+                    console.log(user.uid)
+                })
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode)
-                console.log(errorMessage)
+                console.log(error.code)
+                console.log(error.message)
             });
         } catch (error) {
             console.log(error);
@@ -44,16 +45,16 @@ function Signup() {
                     </div>
                     <div className='input-field-container'>
                         <p className='input-label'>Email</p>
-                        <input className='custom-input' type={"text"} onChange={(event) => { setemail(event.target.value) }} />
+                        <input className='custom-input' type={"text"} onChange={(event) => setemail(event.target.value) } />
                         <p className='input-label'>Password</p>
-                        <input className='custom-input' type={"text"} onChange={(event) => { setpassword(event.target.value) }} />
+                        <input className='custom-input' type={"text"} onChange={(event) => setpassword(event.target.value) } />
                         <div style={{ display: "flex", alignItems: "center", width: 400, justifyContent: "space-between" }}>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <input type={"checkbox"} className="check-box" />
                                 <p className='input-label' >Remember Me</p>
                             </div>
                         </div>
-                        <button className='custon-button' onClick={newUser}>SignUp</button>
+                        <button className='custon-button' onClick={createNewUser}>SignUp</button>
                     </div>
                 </div>
                 {/* <img
