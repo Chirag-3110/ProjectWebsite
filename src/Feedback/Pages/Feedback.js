@@ -1,22 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../Contact/Pages/contact.css';
 import { TextField, Box } from '@mui/material'
 import Button from '@mui/material/Button';
 import feedbackImage from '../../Assets/feedbackImage.jpg'
 import './feedback.css';
+import { db } from "../../firebase";
+import { doc, getDoc } from "firebase/firestore";
 function Feedback() {
-    async function Main() {
-        console.log("coming")
-        await fetch("http://192.168.54.185:8000/read", {
-            method: "GET",
-        }).then((res) => {
-            console.log(res)
-        })
-    }
     return (
         <>
             <div className="contact-div">
-                <button onClick={Main} className="contact-btn">Feedback</button>
+                <button className="contact-btn">Feedback</button>
             </div>
             <div className="FeedbackBox">
 
