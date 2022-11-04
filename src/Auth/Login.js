@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import AppLogo from '../Assets/AppLogo.png';
 import AuthImage from '../Assets/AuthImage.png';
 import './Auth.css';
+import { signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../firebase";
 import { Link } from 'react-router-dom'
 const Login = () => {
-
+    const [email, setemail] = useState(null)
+    const [password, setpassword] = useState(null)
+    const newUser = async () => {
+        console.log(email)
+        console.log(password)
+        try {
+            signInWithEmailAndPassword(auth,email,password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode)
+                console.log(errorMessage)
+            });
+        } catch (error) {
+            console.log(error);
+        }   
+    }
     return (
         <>
             <div style={{ display: 'flex', alignItems: "center" }}>
@@ -21,9 +43,9 @@ const Login = () => {
                     </div>
                     <div className='input-field-container'>
                         <p className='input-label'>Email</p>
-                        <input className='custom-input' type={"text"} />
+                        <input className='custom-input' type={"text"}  onChange={(event) => { setemail(event.target.value) }} />
                         <p className='input-label'>Password</p>
-                        <input className='custom-input' type={"text"} />
+                        <input className='custom-input' type={"text"} onChange={(event) => { setpassword(event.target.value) }} />
                         <div style={{ display: "flex", alignItems: "center", width: 400, justifyContent: "space-between" }}>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <input type={"checkbox"} className="check-box" />
@@ -33,7 +55,7 @@ const Login = () => {
                                 Forgot Password ?
                             </Link></p>
                         </div>
-                        <button className='custon-button'>Login</button>
+                        <button className='custon-button' onClick={newUser}>Login</button>
                     </div>
                 </div>
                 <img
