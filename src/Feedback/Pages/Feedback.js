@@ -5,12 +5,12 @@ import Button from '@mui/material/Button';
 import feedbackImage from '../../Assets/feedbackImage.jpg'
 import './feedback.css';
 import { db } from "../../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 function Feedback() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [feedback, setFeedback] = useState('')
-    const SubmitFeedback = () => {
+    const SubmitFeedback = async () => {
         if (email === "" && name === "" && feedback === "") {
             console.log("enter all the field please")
         }
@@ -19,13 +19,14 @@ function Feedback() {
                 console.log(name)
                 console.log(email)
                 console.log(feedback)
-                const feedbackRef = doc(db, 'FeedBack', "HyYvISaH2CkCFxvA4N2q")
-                setDoc(feedbackRef, {
+                // const feedbackRef = doc(db, 'FeedBack', add())
+                // console.log("Document written with ID: ", docRef.id);
+                const docRef = await addDoc(collection(db, "FeedBack"), {
                     name: name,
                     email: email,
                     feedback: feedback
-                }).then((res) => {
-                    console.log("Your data has added")
+                }).then((docRef) => {
+                    console.log(docRef.id)
                 }).catch((error) => {
                     console.log(error.code)
                     console.log(error.message)
