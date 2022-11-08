@@ -1,7 +1,7 @@
 import "./Services.css"
 import TitleContainer from '../../Home/components/HomeTitle'
-import { TextField, Box } from '@mui/material'
-import ClearIcon from '@mui/icons-material/Clear';
+import { TextField } from '@mui/material'
+// import ClearIcon from '@mui/icons-material/Clear';
 import { useState } from "react";
 const card_details = [
   {
@@ -37,15 +37,21 @@ const TechDetails = [
     id: 7, Language: "Node JS", selected: false
   },
 ]
-function About() {
 
+function About() {
+  const [myStyle, setMyStyle] = useState(false);
   const UpdateClicked = (id) => {
     console.log(id)
+    setMyStyle(prevState => ({
+      ...myStyle,
+      [id]: !prevState[id]
+    }))
     const rowToChange = TechDetails.findIndex(item => {
       return item.id === id;
     });
 
     TechDetails[rowToChange].selected = !TechDetails[rowToChange].selected;
+
     console.log(TechDetails);
 
   }
@@ -86,16 +92,16 @@ function About() {
                 {/* <div>Select Preferred Tech</div> */}
                 <div className="TechDetails">
                   {
-                    TechDetails.map((item) => (
+                    TechDetails.map((item, i) => (
                       <div className="TechName"
                         // style={{
-                        //   backgroundColor: {}
+                        //   backgroundColor: item.selected === true ? "grey" : "darkgrey",
                         // }}
-                        // style={{
-                        //   ...item.selected == true ? { backgroundColor: "green" } : { backgroundColor: "red" }
-                        // }}
+                        key={i}
                         style={{
-                          backgroundColor: item.selected == true ? "grey" : "darkgrey",
+                          backgroundColor: myStyle[`${i + 1}`]
+                            ? "grey"
+                            : "darkgrey"
                         }}
                         onClick={() => { UpdateClicked(item.id) }}>{item.Language} </div>
                     ))
