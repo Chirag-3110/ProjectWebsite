@@ -97,9 +97,9 @@ function About() {
                         // style={{
                         //   backgroundColor: item.selected === true ? "grey" : "darkgrey",
                         // }}
-                        key={i}
+                        key={item.id}
                         style={{
-                          backgroundColor: myStyle[`${i + 1}`]
+                          backgroundColor: myStyle[`${item.id}`]
                             ? "grey"
                             : "darkgrey"
                         }}
