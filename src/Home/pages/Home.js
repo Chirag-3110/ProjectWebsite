@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <div className='title-main-container'>
-        <div className='title-div'>
+        <div className='main-div'>
           <h1 className='title-header'>Projects that you Love</h1>
           <button className='start-button'>Get in Touch</button>
         </div>
@@ -17,7 +17,7 @@ function Home() {
         />
       </div>
       <TitleContainer title="Categories" />
-      <div className='main-container'>
+      <div className='item-card-container'>
         <Card title="Website" imageLink="https://sites.udel.edu/njimenez/files/2018/05/how-to-create-a-website-feature-image-e1496943224192-1yzdyp6.jpg" />
         <Card title="App" imageLink="https://www.webhopers.com/wp-content/uploads/2022/02/app-development-company-haridwar.jpeg" />
         <Card title="Portfolio" imageLink="https://img.freepik.com/free-vector/hand-drawn-portfolio-template_52683-79647.jpg?w=2000" />
