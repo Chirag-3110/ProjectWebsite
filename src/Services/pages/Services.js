@@ -58,7 +58,9 @@ function About() {
   return (
     <div style={{ height: '100vh' }}>
       <div className="TopMain">
-        <TitleContainer title="Services" />
+        <div className='title-div-container1'>
+          <h1>Services</h1>
+        </div>
       </div>
       <div className="MainPortion">
         <div className='scrool-container'>
