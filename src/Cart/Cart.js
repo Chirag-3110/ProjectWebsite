@@ -12,7 +12,7 @@ const Cart = () => {
     const getOrderData=()=>{
         let resultArray=[];
         let conditinoOne=where("UserUid", "==", 'uhfhhsj');
-        let conditionTwo=where("request", "==", 'pending');
+        let conditionTwo=where("request", "==", 'Added');
         const baseQuery = query(collection(db,"Orders"),conditinoOne,conditionTwo);
         getDocs(baseQuery).then((res)=>{
             res.forEach((item)=>{
@@ -40,6 +40,7 @@ const Cart = () => {
                                 <button className='edit-button'>edit</button>
                             </div>
                             <div className='items-all'>
+                                <p className='title'>Tech</p>
                                 <div className='main-values'>
                                     <div className='items'>
                                         {
@@ -52,9 +53,15 @@ const Cart = () => {
                                     </div>
                                 </div>
                                 <div className='items'>
+                                    <div>
                                         <h4 className='item-label'>{item.price}</h4>
-                                        <h4 className='item-label'>{item.duration}</h4>
+                                        <p className='other-title'>Price</p>
                                     </div>
+                                    <div>
+                                        <h4 className='item-label'>{item.duration}</h4>
+                                        <p className='other-title'>Duration</p>
+                                    </div>
+                                </div>
                             </div>
                             <div className='btn-div'>
                                 <button className='request-button'>{item.request}</button>
