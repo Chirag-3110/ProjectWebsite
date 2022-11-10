@@ -1,7 +1,5 @@
 import "./Services.css"
-import TitleContainer from '../../Home/components/HomeTitle'
 import { TextField } from '@mui/material'
-// import ClearIcon from '@mui/icons-material/Clear';
 import { useState } from "react";
 const card_details = [
   {
