@@ -1,6 +1,9 @@
+import React, { useEffect, useState } from 'react'
 import "./Services.css"
+import { db } from "../../firebase";
+import { addDoc, collection } from "firebase/firestore";
 import { TextField } from '@mui/material'
-import { useState } from "react";
+
 const card_details = [
   {
     id: 1, type: "web", imagePath: "https://www.uxweb-design.com/wp-content/uploads/2019/10/Web-design-1.jpg", name: "website"
@@ -38,6 +41,27 @@ const TechDetails = [
 
 function About() {
   const [myStyle, setMyStyle] = useState(false);
+  const[projectname,setProjectname]=useState('');
+  const[projectexpect,setProjectexpect]=useState('');
+  const[description,setDescription]=useState('');
+ 
+  const Submitproject = async () =>{
+         if(projectname === "" && projectname === "" && description === ""){
+          console.log("Please enter all the fields")
+         }
+         else{
+          const docRef = await addDoc(collection(db,"Orders"),{
+            projectname: projectname,
+            projectexpect: projectexpect,
+            description: description
+          }).then((docRef) => {
+            console.log(docRef.id)
+        })
+          console.log(projectname)
+          console.log(projectexpect)
+          console.log(description)
+              }
+  }
   const UpdateClicked = (id) => {
     console.log(id)
     setMyStyle(prevState => ({
@@ -109,15 +133,15 @@ function About() {
                 </div>
               </div>
               <div className="TechDetails">
-                <TextField id="outlined-basic" multiline label="Project Name" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
-                <TextField id="outlined-basic" multiline label="Project Expected duration (in months)" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
+                <TextField onChange={(event) => setProjectname(event.target.value)} id="outlined-basic" multiline label="Project Name" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
+                <TextField onChange={(event) => setProjectexpect(event.target.value)} id="outlined-basic" multiline label="Project Expected duration (in months)" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
               </div>
               <div className="BoxOption">
-                <TextField id="outlined-basic" rows={5} multiline label="Give a description about your Project" variant="outlined" size='small' color="warning" style={{ width: "83%", borderRadius: "10px", backgroundColor: "white" }} />
+                <TextField onChange={(event) => setDescription(event.target.value)} id="outlined-basic" rows={5} multiline label="Give a description about your Project" variant="outlined" size='small' color="warning" style={{ width: "83%", borderRadius: "10px", backgroundColor: "white" }} />
               </div>
               <div className="Sidebtn">
 
-                <button className="btn">Book Now</button>
+                <button className="btn" onClick={Submitproject}>Book Now</button>
               </div>
             </div>
           </div>
