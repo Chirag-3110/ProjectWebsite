@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./Services.css"
 import { db } from "../../firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { TextField } from '@mui/material'
-
+const LanguageArray = [];
 const card_details = [
   {
     id: 1, type: "web", imagePath: "https://www.uxweb-design.com/wp-content/uploads/2019/10/Web-design-1.jpg", name: "website"
@@ -32,7 +32,7 @@ const TechDetails = [
     id: 5, Language: "AWS", selected: false
   },
   {
-    id: 6, Language: "Firebase", selected: true
+    id: 6, Language: "Firebase", selected: false
   },
   {
     id: 7, Language: "Node JS", selected: false
@@ -41,26 +41,30 @@ const TechDetails = [
 
 function About() {
   const [myStyle, setMyStyle] = useState(false);
-  const[projectname,setProjectname]=useState('');
-  const[projectexpect,setProjectexpect]=useState('');
-  const[description,setDescription]=useState('');
- 
-  const Submitproject = async () =>{
-         if(projectname === "" && projectname === "" && description === ""){
-          console.log("Please enter all the fields")
-         }
-         else{
-          const docRef = await addDoc(collection(db,"Orders"),{
-            projectname: projectname,
-            projectexpect: projectexpect,
-            description: description
-          }).then((docRef) => {
-            console.log(docRef.id)
-        })
-          console.log(projectname)
-          console.log(projectexpect)
-          console.log(description)
-              }
+  const [projectname, setProjectname] = useState('');
+  const [projectexpect, setProjectexpect] = useState('');
+  const [description, setDescription] = useState('');
+  const [ProjectPrice, setProjectPrice] = useState('');
+  const [SelectedTech] = useState([])
+
+  const Submitproject = async () => {
+    if (projectname === "" && projectname === "" && description === "" && ProjectPrice === "") {
+      console.log("Please enter all the fields")
+    }
+    else {
+      DataFilter();
+      await addDoc(collection(db, "Orders"), {
+        projectname: projectname,
+        projectexpect: projectexpect,
+        description: description,
+        projectTech: LanguageArray,
+        request: "pending",
+        price: ProjectPrice
+
+      }).then((docRef) => {
+        console.log(docRef.id)
+      })
+    }
   }
   const UpdateClicked = (id) => {
     console.log(id)
@@ -76,6 +80,17 @@ function About() {
 
     console.log(TechDetails);
 
+  }
+  const DataFilter = () => {
+    SelectedTech.push(...TechDetails.filter(TechDetail => {
+      return TechDetail.selected === true;
+    }))
+    let i = 0;
+    for (i = 0; i < SelectedTech.length; i++) {
+      LanguageArray.push(SelectedTech[i].Language)
+    }
+    console.log(SelectedTech[0].Language)
+    console.log("ten", LanguageArray)
   }
   return (
     <div style={{ height: '100vh' }}>
@@ -135,6 +150,10 @@ function About() {
               <div className="TechDetails">
                 <TextField onChange={(event) => setProjectname(event.target.value)} id="outlined-basic" multiline label="Project Name" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
                 <TextField onChange={(event) => setProjectexpect(event.target.value)} id="outlined-basic" multiline label="Project Expected duration (in months)" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
+              </div>
+              <div className="TechDetails" style={{ justifyContent: "flex-start", marginLeft: "8%" }}>
+                <TextField onChange={(event) => setProjectPrice(event.target.value)} id="outlined-basic" multiline label="Project Price you are expecting" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
+
               </div>
               <div className="BoxOption">
                 <TextField onChange={(event) => setDescription(event.target.value)} id="outlined-basic" rows={5} multiline label="Give a description about your Project" variant="outlined" size='small' color="warning" style={{ width: "83%", borderRadius: "10px", backgroundColor: "white" }} />
