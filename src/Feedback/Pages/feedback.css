@@ -1,3 +1,29 @@
+.Popper-div {
+    margin: auto;
+    width: auto;
+    width: 30%;
+    background-color: white;
+    /* margin: 1% 5%; */
+    margin-left: 35%;
+    margin-right: 35%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-top: 20%;
+    border: 1px solid black;
+    border-radius: 10px;
+    /* background-color: rgb(223, 211, 195); */
+    background-color: rgb(252, 203, 112);
+}
+
+.PopperContent {
+    font-size: 20px;
+    font-weight: 600;
+}
+
 .FeedbackBox {
     display: flex;
     flex-direction: row;

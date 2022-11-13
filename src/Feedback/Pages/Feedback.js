@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../../Contact/Pages/contact.css';
-import { TextField, Box } from '@mui/material'
+import { TextField } from '@mui/material'
 import Button from '@mui/material/Button';
 import feedbackImage from '../../Assets/feedbackImage.jpg'
 import './feedback.css';
@@ -10,6 +10,7 @@ function Feedback() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [feedback, setFeedback] = useState('')
+    const [showpop, setshowpop] = useState(false)
     const SubmitFeedback = async () => {
         if (email === "" && name === "" && feedback === "") {
             console.log("enter all the field please")
@@ -19,14 +20,16 @@ function Feedback() {
                 console.log(name)
                 console.log(email)
                 console.log(feedback)
-                // const feedbackRef = doc(db, 'FeedBack', add())
-                // console.log("Document written with ID: ", docRef.id);
-                const docRef = await addDoc(collection(db, "FeedBack"), {
+                await addDoc(collection(db, "FeedBack"), {
                     name: name,
                     email: email,
                     feedback: feedback
                 }).then((docRef) => {
                     console.log(docRef.id)
+                    setshowpop(true)
+                    setTimeout(() => {
+                        setshowpop(false)
+                    }, 3000);
                 }).catch((error) => {
                     console.log(error.code)
                     console.log(error.message)
@@ -40,6 +43,17 @@ function Feedback() {
 
     return (
         <>
+            {
+                showpop === false ? null :
+
+                    <div className='Popper-div'>
+                        <img src="https://cdn-icons-png.flaticon.com/128/5290/5290058.png"
+                            style={{ height: "30px", width: "40px" }}
+                            alt=""
+                        />
+                        <p className='PopperContent'>Your feedback has submitted successfully...</p>
+                    </div>
+            }
             <div className="contact-div">
                 <button className="contact-btn">Feedback</button>
             </div>
@@ -59,6 +73,7 @@ function Feedback() {
                 <div className="ImageBox">
                     <img src={feedbackImage}
                         style={{ height: "500px", width: "100%" }}
+                        alt=""
                     />
                 </div>
             </div>

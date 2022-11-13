@@ -46,6 +46,7 @@ function About() {
   const [description, setDescription] = useState('');
   const [ProjectPrice, setProjectPrice] = useState('');
   const [theme, setTheme] = useState("website")
+  const [showpop, setshowpop] = useState(false)
   const [SelectedTech] = useState([])
 
   const Submitproject = async () => {
@@ -64,6 +65,10 @@ function About() {
 
       }).then((docRef) => {
         console.log(docRef.id)
+        setshowpop(true)
+        setTimeout(() => {
+          setshowpop(false)
+        }, 3000);
       })
     }
   }
@@ -95,79 +100,92 @@ function About() {
     setTheme(ProjectTheme)
   }
   return (
-    <div style={{ height: '100vh' }}>
-      <div className="TopMain">
-        <div className='title-div-container1'>
-          <h1>Services</h1>
+    <>
+      {
+        showpop === false ? null :
+
+          <div className='Popper-div1'>
+            <img src="https://cdn-icons-png.flaticon.com/128/5290/5290058.png"
+              style={{ height: "30px", width: "40px" }}
+              alt=""
+            />
+            <p className='PopperContent1'>Your request has submitted successfully. For Status update you can check your cart</p>
+          </div>
+      }
+      <div style={{ height: '100vh' }}>
+        <div className="TopMain">
+          <div className='title-div-container1'>
+            <h1>Services</h1>
+          </div>
         </div>
-      </div>
-      <div className="MainPortion">
-        <div className='scrool-container'>
-          {
-            card_details.map((item) => (
-              <div className="innerMainPortion" style={{ padding: "25px 0px 25px 0px" }}>
-                <div className="Card">
-                  <div className="MainImage">
-                    <img
-                      src={item.imagePath}
-                      alt="car"
-                      className='Image'
-                    />
-                  </div>
-                  <div>
-                    <h3 className="h3">{item.name}</h3>
-                    <p className="para">{item.name} is the designed</p>
-                    <button className="btn" onClick={() => { Updatename(item.name) }}>Book Now</button>
+        <div className="MainPortion">
+          <div className='scrool-container'>
+            {
+              card_details.map((item) => (
+                <div className="innerMainPortion" style={{ padding: "25px 0px 25px 0px" }}>
+                  <div className="Card">
+                    <div className="MainImage">
+                      <img
+                        src={item.imagePath}
+                        alt="car"
+                        className='Image'
+                      />
+                    </div>
+                    <div>
+                      <h3 className="h3">{item.name}</h3>
+                      <p className="para">{item.name} is the designed</p>
+                      <button className="btn" onClick={() => { Updatename(item.name) }}>Book Now</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
-          }
-        </div>
-        <div className="innerMainPortion1" >
-          <div>
-            <h3>Technologies you want</h3>
-            <h2>{theme}</h2>
-            <div className="mainBoxOption">
-              <div className="BoxOption">
-                {/* <div>Select Preferred Tech</div> */}
+              ))
+            }
+          </div>
+          <div className="innerMainPortion1" >
+            <div>
+              <h3>Technologies you want</h3>
+              <h2>{theme}</h2>
+              <div className="mainBoxOption">
+                <div className="BoxOption">
+                  {/* <div>Select Preferred Tech</div> */}
+                  <div className="TechDetails">
+                    {
+                      TechDetails.map((item, i) => (
+                        <div className="TechName"
+                          // style={{
+                          //   backgroundColor: item.selected === true ? "grey" : "darkgrey",
+                          // }}
+                          key={item.id}
+                          style={{
+                            backgroundColor: myStyle[`${item.id}`]
+                              ? "grey"
+                              : "darkgrey"
+                          }}
+                          onClick={() => { UpdateClicked(item.id) }}>{item.Language} </div>
+                      ))
+                    }
+                  </div>
+                </div>
                 <div className="TechDetails">
-                  {
-                    TechDetails.map((item, i) => (
-                      <div className="TechName"
-                        // style={{
-                        //   backgroundColor: item.selected === true ? "grey" : "darkgrey",
-                        // }}
-                        key={item.id}
-                        style={{
-                          backgroundColor: myStyle[`${item.id}`]
-                            ? "grey"
-                            : "darkgrey"
-                        }}
-                        onClick={() => { UpdateClicked(item.id) }}>{item.Language} </div>
-                    ))
-                  }
+                  <TextField onChange={(event) => setProjectname(event.target.value)} id="outlined-basic" multiline label="Project Name" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
+                  <TextField onChange={(event) => setProjectexpect(event.target.value)} id="outlined-basic" multiline label="Project Expected duration (in months)" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
                 </div>
-              </div>
-              <div className="TechDetails">
-                <TextField onChange={(event) => setProjectname(event.target.value)} id="outlined-basic" multiline label="Project Name" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
-                <TextField onChange={(event) => setProjectexpect(event.target.value)} id="outlined-basic" multiline label="Project Expected duration (in months)" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
-              </div>
-              <div className="TechDetails" style={{ justifyContent: "flex-start", marginLeft: "8%" }}>
-                <TextField onChange={(event) => setProjectPrice(event.target.value)} id="outlined-basic" multiline label="Project Price you are expecting" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
+                <div className="TechDetails" style={{ justifyContent: "flex-start", marginLeft: "8%" }}>
+                  <TextField onChange={(event) => setProjectPrice(event.target.value)} id="outlined-basic" multiline label="Project Price you are expecting" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
 
-              </div>
-              <div className="BoxOption">
-                <TextField onChange={(event) => setDescription(event.target.value)} id="outlined-basic" rows={5} multiline label="Give a description about your Project" variant="outlined" size='small' color="warning" style={{ width: "83%", borderRadius: "10px", backgroundColor: "white" }} />
-              </div>
-              <div className="Sidebtn">
+                </div>
+                <div className="BoxOption">
+                  <TextField onChange={(event) => setDescription(event.target.value)} id="outlined-basic" rows={5} multiline label="Give a description about your Project" variant="outlined" size='small' color="warning" style={{ width: "83%", borderRadius: "10px", backgroundColor: "white" }} />
+                </div>
+                <div className="Sidebtn">
 
-                <button className="btn" onClick={Submitproject}>Book Now</button>
+                  <button className="btn" onClick={Submitproject}>Book Now</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 } export default About

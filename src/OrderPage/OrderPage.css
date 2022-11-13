@@ -30,3 +30,30 @@
     justify-content: center;
     border: 1px solid red;
 }
+
+@media screen and (min-width: 300px) and (max-width:550px) {
+    .OrderMainPage {
+        /* border: 1px solid black; */
+        border-radius: 7px;
+        box-shadow: 2px 1px 5px 3px rgb(105, 104, 102);
+        margin: 5% 8%;
+        display: block;
+    }
+
+    .OrderDetailDiv {
+        width: 100%;
+        text-align: center;
+        margin: 1% 1%;
+        flex-direction: row;
+    }
+
+    .OrderDetailDiv1 {
+        width: 80%;
+        margin: 1% 1%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-left: 10%;
+    }
+}
