@@ -10,7 +10,7 @@ function OrderPage() {
     }, [])
     const getOrderData = () => {
         let resultArray = [];
-        let conditinoOne = where("UserUid", "==", 'uhfhhsj');
+        let conditinoOne = where("UserUid", "==", 'xzZSZufb6kQHeM0xQsoG0dpyLAu2');
         const baseQuery = query(collection(db, "Orders"), conditinoOne);
         getDocs(baseQuery).then((res) => {
             res.forEach((item) => {

@@ -11,7 +11,7 @@ const Cart = () => {
 
     const getOrderData=()=>{
         let resultArray=[];
-        let conditinoOne=where("UserUid", "==", 'uhfhhsj');
+        let conditinoOne=where("UserUid", "==", 'xzZSZufb6kQHeM0xQsoG0dpyLAu2');
         let conditionTwo=where("request", "==", 'Added');
         const baseQuery = query(collection(db,"Orders"),conditinoOne,conditionTwo);
         getDocs(baseQuery).then((res)=>{

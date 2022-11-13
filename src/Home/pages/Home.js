@@ -1,14 +1,32 @@
+import { useContext, useEffect } from 'react';
 import Card from '../components/Card';
+import { getAuth, signOut } from "firebase/auth";
 import TitleContainer from '../components/HomeTitle';
 import '../css/Home.css';
 import reviewpic from '../../Assets/reviewpic.png';
+import {ContextData}  from '../../App';
 function Home() {
+// where ever we want to user current authnticated user info
+// import context and use like below
+  const { userUid,setUserUid }=useContext(ContextData);
+  useEffect(()=>{
+    console.log(userUid);
+  },[])
+  const logOut=()=>{
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      alert("logOut")
+      setUserUid(null)
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
   return (
     <>
       <div className='title-main-container'>
         <div className='main-div'>
           <h1 className='title-header'>Projects that you Love</h1>
-          <button className='start-button'>Get in Touch</button>
+          <button className='start-button' onClick={logOut}>Get in Touch</button>
         </div>
         <img
           src="https://thumbs.dreamstime.com/b/projects-concept-black-chalkboard-d-rendering-handwritten-top-view-office-desk-lot-business-office-supplies-79906734.jpg"

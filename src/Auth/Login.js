@@ -58,12 +58,12 @@ const Login = () => {
                         <button className='custon-button1' onClick={newUser}>Login</button>
                     </div>
                 </div>
-                <img
+                {/* <img
                     src={AuthImage}
 
                     className="AuthImage"
                     alt=''
-                />
+                /> */}
             </div>
         </>
     )
