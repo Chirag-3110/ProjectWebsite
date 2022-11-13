@@ -45,6 +45,7 @@ function About() {
   const [projectexpect, setProjectexpect] = useState('');
   const [description, setDescription] = useState('');
   const [ProjectPrice, setProjectPrice] = useState('');
+  const [theme, setTheme] = useState("website")
   const [SelectedTech] = useState([])
 
   const Submitproject = async () => {
@@ -89,8 +90,9 @@ function About() {
     for (i = 0; i < SelectedTech.length; i++) {
       LanguageArray.push(SelectedTech[i].Language)
     }
-    console.log(SelectedTech[0].Language)
-    console.log("ten", LanguageArray)
+  }
+  const Updatename = (ProjectTheme) => {
+    setTheme(ProjectTheme)
   }
   return (
     <div style={{ height: '100vh' }}>
@@ -115,7 +117,7 @@ function About() {
                   <div>
                     <h3 className="h3">{item.name}</h3>
                     <p className="para">{item.name} is the designed</p>
-                    <button className="btn">Book Now</button>
+                    <button className="btn" onClick={() => { Updatename(item.name) }}>Book Now</button>
                   </div>
                 </div>
               </div>
@@ -125,7 +127,7 @@ function About() {
         <div className="innerMainPortion1" >
           <div>
             <h3>Technologies you want</h3>
-            <h2>Website</h2>
+            <h2>{theme}</h2>
             <div className="mainBoxOption">
               <div className="BoxOption">
                 {/* <div>Select Preferred Tech</div> */}
