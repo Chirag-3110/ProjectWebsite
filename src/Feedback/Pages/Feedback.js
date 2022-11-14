@@ -6,11 +6,12 @@ import feedbackImage from '../../Assets/feedbackImage.jpg'
 import './feedback.css';
 import { db } from "../../firebase";
 import { addDoc, collection } from "firebase/firestore";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Feedback() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [feedback, setFeedback] = useState('')
-    const [showpop, setshowpop] = useState(false)
     const SubmitFeedback = async () => {
         if (email === "" && name === "" && feedback === "") {
             console.log("enter all the field please")
@@ -26,10 +27,15 @@ function Feedback() {
                     feedback: feedback
                 }).then((docRef) => {
                     console.log(docRef.id)
-                    setshowpop(true)
-                    setTimeout(() => {
-                        setshowpop(false)
-                    }, 3000);
+                    toast.success('🦄 Your feedback is submitted', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        theme: "light",
+                    });
                 }).catch((error) => {
                     console.log(error.code)
                     console.log(error.message)
@@ -43,17 +49,6 @@ function Feedback() {
 
     return (
         <>
-            {
-                showpop === false ? null :
-
-                    <div className='Popper-div'>
-                        <img src="https://cdn-icons-png.flaticon.com/128/5290/5290058.png"
-                            style={{ height: "30px", width: "40px" }}
-                            alt=""
-                        />
-                        <p className='PopperContent'>Your feedback has submitted successfully...</p>
-                    </div>
-            }
             <div className="contact-div">
                 <button className="contact-btn">Feedback</button>
             </div>
@@ -77,6 +72,7 @@ function Feedback() {
                     />
                 </div>
             </div>
+            <ToastContainer />
         </>
     )
 }

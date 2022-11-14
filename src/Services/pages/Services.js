@@ -4,6 +4,8 @@ import { db } from "../../firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { TextField } from '@mui/material'
 import { ContextData } from '../../App';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const LanguageArray = [];
 const card_details = [
   {
@@ -42,14 +44,13 @@ const TechDetails = [
 
 function About() {
 
-  const { userUid, userEmail, getAutherUserDetails } = useContext(ContextData);
+  const { userUid, userEmail } = useContext(ContextData);
   const [myStyle, setMyStyle] = useState(false);
   const [projectname, setProjectname] = useState('');
   const [projectexpect, setProjectexpect] = useState('');
   const [description, setDescription] = useState('');
   const [ProjectPrice, setProjectPrice] = useState('');
   const [theme, setTheme] = useState("website")
-  const [showpop, setshowpop] = useState(false)
   const [SelectedTech] = useState([])
 
   const Submitproject = async () => {
@@ -70,10 +71,15 @@ function About() {
 
       }).then((docRef) => {
         console.log(docRef.id)
-        setshowpop(true)
-        setTimeout(() => {
-          setshowpop(false)
-        }, 3000);
+        toast.warn('🦄 Your order is in pending state & will approve shortly', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          theme: "light",
+        });
       })
     }
   }
@@ -106,17 +112,6 @@ function About() {
   }
   return (
     <>
-      {
-        showpop === false ? null :
-
-          <div className='Popper-div1'>
-            <img src="https://cdn-icons-png.flaticon.com/128/5290/5290058.png"
-              style={{ height: "30px", width: "40px" }}
-              alt=""
-            />
-            <p className='PopperContent1'>Your request has submitted successfully. For Status update you can check your cart</p>
-          </div>
-      }
       <div style={{ height: '100vh' }}>
         <div className="TopMain">
           <div className='title-div-container1'>
@@ -191,6 +186,7 @@ function About() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 } export default About

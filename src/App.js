@@ -1,5 +1,5 @@
-import React, { useState, createContext, useEffect } from "react";
-import { Routes, Route, Router } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./App.css";
 //Auth pages
@@ -41,7 +41,7 @@ function App() {
 
 
     <>
-    
+
       {
         !userUid ?
           <Routes>
