@@ -22,7 +22,7 @@ function App() {
   useEffect(()=>{
     getAutherUserDetails();
   },[]);
-  async function getAutherUserDetails(){
+  async function getAutherUserDetails(userValue){
     const auth = getAuth();
       await onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -30,6 +30,7 @@ function App() {
         setUserUid(uid);
       } else {
         console.log("User Not Authenticated")
+        setUserUid(userValue);
       }
     });
   }
@@ -51,7 +52,8 @@ function App() {
         {
           userUid &&
           <ContextData.Provider value={{
-            userUid:userUid
+            userUid:userUid,
+            setUserUid:setUserUid
           }}>
               <Routes>
                 <Route path="/" element={<Home />} />

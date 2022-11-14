@@ -8,7 +8,7 @@ import {ContextData}  from '../../App';
 function Home() {
 // where ever we want to user current authnticated user info
 // import context and use like below
-  const { userUid,setUserUid }=useContext(ContextData);
+  const { userUid,getAutherUserDetails }=useContext(ContextData);
   useEffect(()=>{
     console.log(userUid);
   },[])
@@ -16,7 +16,7 @@ function Home() {
     const auth = getAuth();
     signOut(auth).then(() => {
       alert("logOut")
-      setUserUid(null)
+      getAutherUserDetails(null)
     }).catch((error) => {
       // An error happened.
     });
