@@ -1,5 +1,5 @@
-import React,{useState,createContext, useEffect } from "react";
-import { Routes, Route,Router } from "react-router-dom";
+import React, { useState, createContext, useEffect } from "react";
+import { Routes, Route, Router } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./App.css";
 //Auth pages
@@ -19,15 +19,18 @@ import ForgotPassword from "./Auth/ForgotPassword";
 export const ContextData = React.createContext();
 function App() {
   const [userUid, setUserUid] = useState(null);
-  useEffect(()=>{
+  const [userEmail, setUserEmail] = useState(null)
+  useEffect(() => {
     getAutherUserDetails();
-  },[]);
-  async function getAutherUserDetails(userValue){
+  }, []);
+  async function getAutherUserDetails(userValue) {
     const auth = getAuth();
-      await onAuthStateChanged(auth, (user) => {
+    await onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
+        const email = user.email
         setUserUid(uid);
+        setUserEmail(email)
       } else {
         console.log("User Not Authenticated")
         setUserUid(userValue);
@@ -36,40 +39,43 @@ function App() {
   }
   return (
 
-    
+
     <>
-    {
-      !userUid?
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/sign" element={<Signup />} />
-        <Route path="/ForgotPassword" element={<ForgotPassword />} />
-      </Routes>:
-      <div className="App">
-        <div style={{ padding: 10 }}>
-          <ResponsiveAppBar />
-        </div>
-        {
-          userUid &&
-          <ContextData.Provider value={{
-            userUid:userUid,
-            setUserUid:setUserUid
-          }}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="service" element={<Services />} />
-                <Route path="contact" element={<Contact />} />
-                <Route path="Feedback" element={<Feedback />} />
-                <Route path="OrderPage" element={<OrderPage />} />
-                <Route path="Cart" element={<Cart />} />
-                <Route path="Address" element={<Address />} />
-              </Routes>
-          </ContextData.Provider>
-        }
-      </div>
-    }
-      
-      
+      {
+        !userUid ?
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/sign" element={<Signup />} />
+            <Route path="/ForgotPassword" element={<ForgotPassword />} />
+          </Routes> :
+          <div className="App">
+            <div style={{ padding: 10 }}>
+              <ResponsiveAppBar />
+            </div>
+            {
+              userUid &&
+              <ContextData.Provider value={{
+                userUid: userUid,
+                setUserUid: setUserUid,
+                userEmail: userEmail,
+                setUserEmail: setUserEmail
+
+              }}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="service" element={<Services />} />
+                  <Route path="contact" element={<Contact />} />
+                  <Route path="Feedback" element={<Feedback />} />
+                  <Route path="OrderPage" element={<OrderPage />} />
+                  <Route path="Cart" element={<Cart />} />
+                  <Route path="Address" element={<Address />} />
+                </Routes>
+              </ContextData.Provider>
+            }
+          </div>
+      }
+
+
     </>
   );
 }

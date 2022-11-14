@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../Feedback/Pages/feedback.css';
 import './OrderPage.css'
 import { db } from "../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { ContextData } from '../App';
+
+// where ever we want to user current authnticated user info
+// import context and use like below
 function OrderPage() {
+    const { userUid, getAutherUserDetails } = useContext(ContextData);
     const [orderDetail, setOrderDetail] = useState([]);
     useEffect(() => {
         getOrderData();
     }, [])
     const getOrderData = () => {
         let resultArray = [];
-        let conditinoOne = where("UserUid", "==", 'xzZSZufb6kQHeM0xQsoG0dpyLAu2');
+        let conditinoOne = where("UserUid", "==", userUid);
         const baseQuery = query(collection(db, "Orders"), conditinoOne);
         getDocs(baseQuery).then((res) => {
             res.forEach((item) => {
