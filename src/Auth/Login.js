@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import AppLogo from '../Assets/AppLogo.png';
-import AuthImage from '../Assets/AuthImage.png';
-import './Auth.css';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import {  doc, setDoc  } from "firebase/firestore";
+import { auth , db } from "../firebase";
 import { Link } from 'react-router-dom'
-const Login = () => {
+import './Signup.css';
+
+const Login=()=>{
     const [email, setemail] = useState(null)
     const [password, setpassword] = useState(null)
     const newUser = async () => {
@@ -27,11 +28,19 @@ const Login = () => {
             console.log(error);
         }
     }
+
     return (
         <>
-            <div style={{ display: 'flex', alignItems: "center" }}>
-                <div className='main-container1'>
-                    <div className='title-container1'>
+            <div style={{ 
+                display: 'flex',
+                alignItems: "center", 
+                height:"100vh",
+                width:'100%',
+                backgroundColor:"rgba(255, 147, 39, 0.407)"
+            }}
+            >
+                <div className='main-container'>
+                    <div className='title-container'>
                         <img
                             src={AppLogo}
                             className='app-logo-image'
@@ -43,29 +52,40 @@ const Login = () => {
                     </div>
                     <div className='input-field-container'>
                         <p className='input-label'>Email</p>
-                        <input className='custom-input1' type={"text"} onChange={(event) => { setemail(event.target.value) }} />
+                        <input className='custom-input' type={"text"} onChange={(event) => setemail(event.target.value) } 
+                            placeholder="Email"
+                        
+                        />
                         <p className='input-label'>Password</p>
-                        <input className='custom-input1' type={"text"} onChange={(event) => { setpassword(event.target.value) }} />
-                        <div style={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "space-between" }}>
-                            <div style={{ display: "flex", alignItems: "center" }}>
-                                <input type={"checkbox"} className="check-box" />
-                                <p className='input-label' >Remember Me</p>
-                            </div>
-                            <p className='input-label' >    <Link style={{ textDecoration: "none", color: "black" }} to={'/ForgotPassword'}>
+                        <input className='custom-input' type={"text"} onChange={(event) => setpassword(event.target.value) } 
+                            placeholder="Password"
+                        />
+                        <div style={{ display: "flex", alignItems: "center",justifyContent:"space-between",width:"90%" }}>
+                            <input type={"checkbox"} className="check-box" />
+                            <p className='input-label' >Remember Me</p>
+                        </div>
+                        <p className='input-label' >    <Link style={{ textDecoration: "none", color: "black" }} to={'/ForgotPassword'}>
                                 Forgot Password ?
                             </Link></p>
-                        </div>
-                        <button className='custon-button1' onClick={newUser}>Login</button>
+                        <Link style={{ textDecoration: "none", color: "white" }} to={'/log'}>
+                        <button className='custon-button' onClick={newUser}
+                            style={{
+                                backgroundColor:"#FF7A00",
+                                borderWidth:2,
+                                borderColor:"#FF7A00",
+                                color:"white"
+                            }}
+                        >
+                            Login
+                        </button>
+                        </Link>
                     </div>
                 </div>
-                {/* <img
-                    src={AuthImage}
-
-                    className="AuthImage"
-                    alt=''
-                /> */}
             </div>
         </>
-    )
+    );
+
+
 }
+
 export default Login;
