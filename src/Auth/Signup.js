@@ -4,30 +4,58 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import {  doc, setDoc  } from "firebase/firestore";
 import { auth , db } from "../firebase";
 import { Link } from 'react-router-dom'
+import EmailValidate from "../validators/EmailValidation";
+import PasswordValidate from '../validators/PasswordValidation';
+import { useNavigate } from "react-router-dom";
 import './Signup.css';
 
 const Signup=()=>{
+    const [userName,setUserName]=useState('');
     const [email, setemail] = useState('')
-    const [password, setpassword] = useState('')
-    const createNewUser = async () => {
+    const [password, setpassword] = useState('');
+    let navigate = useNavigate();
+    const validateUser=()=>{
         try {
-            createUserWithEmailAndPassword(auth,email,password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                const userRef = doc(db, 'Users', user.uid)
-                setDoc(userRef,{
-                    name:"chirag"
-                }).then(()=>{
-                    console.log(user.uid)
-                })
-            })
-            .catch((error) => {
-                console.log(error.code)
-                console.log(error.message)
-            });
+            if(userName==="")
+                throw "Please enter UserName";
+            if(email==="")
+                throw "Please enter Email";
+            if(password==="")
+                throw "Please enter Password";
+            if(!EmailValidate(email)){
+                throw "Please enter a valid Email"
+            }
+            if(!PasswordValidate(password)){
+                throw "Please enter a valid Password (Must Contains Capital Letter,Special Character and a Number)"
+            }
+            createNewUser();
         } catch (error) {
-            console.log(error);
-        }   
+            console.log(error)
+        }
+    }
+    const createNewUser = async () => {
+        createUserWithEmailAndPassword(auth,email,password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            const userRef = doc(db, 'Users', user.uid)
+            setDoc(userRef,{
+                name:userName,
+                email:email
+            }).then(()=>{
+                console.log(user.uid)
+                
+                navigate("/");
+            });
+        })
+        .catch((error) => {
+            switch (error.code) {
+                case "auth/email-already-in-use":
+                    console.log("Email Already Exists")
+                    break;
+                default:
+                    break;
+            }
+        }); 
     }
 
     return (
@@ -53,6 +81,11 @@ const Signup=()=>{
                     </div>
                     <div className='input-field-container'>
                         <p className='input-label'>Email</p>
+                        <input className='custom-input' type={"text"} onChange={(event) => setUserName(event.target.value) } 
+                            placeholder="UserName"
+                        
+                        />
+                        <p className='input-label'>Email</p>
                         <input className='custom-input' type={"text"} onChange={(event) => setemail(event.target.value) } 
                             placeholder="Email"
                         
@@ -65,7 +98,7 @@ const Signup=()=>{
                             <input type={"checkbox"} className="check-box" />
                             <p className='input-label' >Remember Me</p>
                         </div>
-                        <button className='custon-button' onClick={createNewUser}
+                        <button className='custon-button' onClick={validateUser}
                             style={{
                                 backgroundColor:"#FF7A00",
                                 borderWidth:2,
@@ -75,15 +108,15 @@ const Signup=()=>{
                         >
                             SignUp
                         </button>
-                        <Link style={{ textDecoration: "none", color: "white" }} to={'/log'}>
-                        <button className='custon-button' 
-                             style={{
-                                backgroundColor:"transparent",
-                                borderWidth:2,
-                                borderColor:"#FF7A00",
-                                color:"#FF7A00"
-                            }}
-                        >
+                        <Link style={{ textDecoration: "none", color: "white" }} to={'/'}>
+                            <button className='custon-button' 
+                                style={{
+                                    backgroundColor:"transparent",
+                                    borderWidth:2,
+                                    borderColor:"#FF7A00",
+                                    color:"#FF7A00"
+                                }}
+                            >
                             Login
                         </button>
                         </Link>
