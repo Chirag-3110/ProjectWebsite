@@ -128,7 +128,7 @@ const ResponsiveAppBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block', margin: "15px", textAlign: "right" }}
+                sx={{ my: 1, color: 'white', display: 'block', margin: "4px", textAlign: "right" }}
               >
                 <Link style={{ textDecoration: "none", color: "white" }} to={page.path}>
                   {page.name}
@@ -136,7 +136,7 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-          <Box style={{ margin: "5px", position: "absolute", right: "0px" }}>
+          <Box style={{ margin: "5px", position: "absolute", right: "-2%" }}>
             <Link style={{ textDecoration: "none", color: "white" }} to={'/Cart'}>
               <LocalMallIcon fontSize='large' />
             </Link>
