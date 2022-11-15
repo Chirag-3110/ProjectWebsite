@@ -14,7 +14,9 @@ import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom'
 import LocalMallIcon from '@mui/icons-material/LocalMall';
+import { hover } from '@testing-library/user-event/dist/hover';
 // const pages = ['Home','Feedback','Services','Call Us'];
+import './nav.css'
 const pages = [
   { name: 'Home', path: "/" },
   { name: 'Feedback', path: "Feedback" },
@@ -93,8 +95,8 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" >
-                    <Link styles={{ textDecoration: "none", color: "white" }} to={page.path}>
+                  <Typography textAlign="center">
+                    <Link className="link" styles={{ listStyle: "none", pointerEvents: 'none', textDecoration: "none", color: "red", fontSize: "90px" }} to={page.path}>
                       {page.name}
                     </Link>
                   </Typography>
@@ -121,7 +123,7 @@ const ResponsiveAppBar = () => {
           >
             ProjectHub
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "right" ,marginRight:"3%"}}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "right", marginRight: "3%" }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -135,9 +137,9 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
           <Box style={{ margin: "5px", position: "absolute", right: "0px" }}>
-                <Link style={{ textDecoration: "none", color: "white" }} to={'/Cart'}>
-                  <LocalMallIcon fontSize='large' />
-                </Link>
+            <Link style={{ textDecoration: "none", color: "white" }} to={'/Cart'}>
+              <LocalMallIcon fontSize='large' />
+            </Link>
           </Box>
 
 
