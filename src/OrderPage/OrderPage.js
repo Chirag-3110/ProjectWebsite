@@ -4,10 +4,12 @@ import './OrderPage.css'
 import { db } from "../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { ContextData } from '../App';
-
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 // where ever we want to user current authnticated user info
 // import context and use like below
 function OrderPage() {
+    let [loading, setLoading] = useState(true);
+    let [color, setColor] = useState("Orange");
     const { userUid, getAutherUserDetails } = useContext(ContextData);
     const [orderDetail, setOrderDetail] = useState([]);
     useEffect(() => {
@@ -30,7 +32,16 @@ function OrderPage() {
                 <button className="contact-btn">OrderPage</button>
             </div>
             {
-                orderDetail.length === 0 ? null :
+                orderDetail.length === 0 ?
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center", width: "100%", height: "100%", marginTop: "10%" }}>
+                        <ClimbingBoxLoader
+                            color={color}
+                            loading={loading}
+                            size={30}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </div> :
                     orderDetail.map((item) => (
                         <div className='OrderMainPage'>
                             <div className='OrderDetailDiv'>
@@ -56,6 +67,7 @@ function OrderPage() {
                         </div>
                     ))
             }
+
         </>
     )
 }
