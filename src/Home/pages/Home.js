@@ -38,10 +38,13 @@ function Home() {
             data-testid="loader"
           />
         </div> : <>
+          <div style={{width:"100%",display:"flex",justifyContent:"flex-end",}}>
+            <button className='logout-button' onClick={logOut}>LogOut</button>
+          </div>
           <div className='title-main-container'>
             <div className='main-div'>
               <h1 className='title-header'>Projects that you Love</h1>
-              <button className='start-button' onClick={logOut}>Get in Touch</button>
+              <button className='start-button'>Get in Touch</button>
             </div>
             <img
               src="https://thumbs.dreamstime.com/b/projects-concept-black-chalkboard-d-rendering-handwritten-top-view-office-desk-lot-business-office-supplies-79906734.jpg"

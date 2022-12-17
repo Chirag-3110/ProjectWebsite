@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import "./Services.css"
 import { db } from "../../firebase";
 import { addDoc, collection } from "firebase/firestore";
-import { TextField } from '@mui/material'
+import { duration, TextField } from '@mui/material'
 import { ContextData } from '../../App';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -67,7 +67,8 @@ function About() {
         description: description,
         projectTech: LanguageArray,
         request: "pending",
-        price: ProjectPrice
+        price: ProjectPrice,
+        duration:'1 month'
 
       }).then((docRef) => {
         console.log(docRef.id)

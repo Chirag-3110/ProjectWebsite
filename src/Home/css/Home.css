@@ -22,6 +22,17 @@
     color: white;
     font-weight: bold;
 }
+.logout-button{
+    width: 200px;
+    margin-right: 10px;
+    height: 50px;
+    background-color: #FF7A00;
+    border-radius: 10px;
+    border: 2px solid #f3cba6;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
 .title-main-container{
     width: 100%;
     display: flex;
