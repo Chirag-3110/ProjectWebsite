@@ -6,6 +6,9 @@ import '../css/Home.css';
 import reviewpic from '../../Assets/reviewpic.png';
 import { ContextData } from '../../App';
 import HashLoader from "react-spinners/HashLoader";
+import HomePage from '../../Assets/HomePage.jpg';
+import { Link } from 'react-router-dom'
+
 function Home() {
   // where ever we want to user current authnticated user info
   // import context and use like below
@@ -38,10 +41,10 @@ function Home() {
             data-testid="loader"
           />
         </div> : <>
-          <div style={{width:"100%",display:"flex",justifyContent:"flex-end",}}>
+          {/* <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", }}>
             <button className='logout-button' onClick={logOut}>LogOut</button>
-          </div>
-          <div className='title-main-container'>
+          </div> */}
+          {/* <div className='title-main-container'>
             <div className='main-div'>
               <h1 className='title-header'>Projects that you Love</h1>
               <button className='start-button'>Get in Touch</button>
@@ -51,6 +54,27 @@ function Home() {
               className='title-image'
               alt=''
             />
+          </div> */}
+          <div className='title-main-container'>
+            <div className='All_Div'>
+
+              <img
+                src={HomePage}
+                className='title-image'
+                alt=''
+              />
+            </div>
+            <div className='Button_border'>
+              <div className='AllBtn'>
+                <button className='logout-button'><Link className='LinkingBtn' to="contact">
+                  Call Us
+                </Link></button>
+
+              </div>
+              <div className='AllBtn'>
+                <button className='logout-button' onClick={logOut}>Logout</button>
+              </div>
+            </div>
           </div>
           <TitleContainer title="Categories" />
           <div className='item-card-container'>
