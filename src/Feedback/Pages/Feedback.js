@@ -13,7 +13,7 @@ function Feedback() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [feedback, setFeedback] = useState('');
-    const [allFeedback,setAllfeedback]=useState([]);
+    const [allFeedback, setAllfeedback] = useState([]);
     const SubmitFeedback = async () => {
         if (email === "" && name === "" && feedback === "") {
             console.log("enter all the field please")
@@ -47,7 +47,7 @@ function Feedback() {
             }
         }
     }
-    const getFeedBack=()=>{
+    const getFeedBack = () => {
         let resultArray = [];
         const feedbackref = query(collection(db, "FeedBack"));
         getDocs(feedbackref).then((res) => {
@@ -57,9 +57,9 @@ function Feedback() {
             setAllfeedback(resultArray)
         })
     }
-    useEffect(()=>{
+    useEffect(() => {
         getFeedBack();
-    },[])
+    }, [])
     return (
         <>
             <div className="contact-div">
@@ -68,7 +68,7 @@ function Feedback() {
             <div className="FeedbackBox">
 
                 <div className="FormCard">
-                    <TextField onChange={(event) => setName(event.target.value)} id="outlined-basic" label="Name" variant="outlined" size='small' color="warning" style={{ width: "60%", borderRadius: "10px",  }} />
+                    <TextField onChange={(event) => setName(event.target.value)} id="outlined-basic" label="Name" variant="outlined" size='small' color="warning" style={{ width: "60%", borderRadius: "10px", }} />
                     <div style={{ margin: "3% 0px" }}>
                         <TextField onChange={(event) => setEmail(event.target.value)} id="outlined-basic" label="Email" variant="outlined" size='small' color="warning" style={{ width: "60%", borderRadius: "10px" }} />
                     </div>
@@ -87,15 +87,19 @@ function Feedback() {
             </div>
             <div className='feedback-container'>
                 {
-                    allFeedback.length===0?null:
-                    allFeedback.map((item)=>(
-                        <div className='feedback-card-container-newone-date-18-12-22'>
-                            <h3>{item.name}</h3>
-                            <h5 style={{width:'100%',fontSize:15}}>
-                                {item.feedback}
-                            </h5>
-                        </div>
-                    ))
+                    allFeedback.length === 0 ? null :
+                        allFeedback.map((item) => (
+                            // <div className='feedback-card-container-newone-date-18-12-22'>
+                            //     <h3>{item.name}</h3>
+                            //     <h5 style={{ width: "80%", fontSize: 15 }}>
+                            //         {item.feedback}
+                            //     </h5>
+                            // </div>
+                            <div className='NewOne'>
+                                <h3>{item.name}</h3>
+                                <div className='NInnerOne'> {item.feedback}</div>
+                            </div>
+                        ))
                 }
             </div>
             <ToastContainer />

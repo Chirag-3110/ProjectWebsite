@@ -29,21 +29,42 @@
     flex-direction: row;
     margin-top: 3%;
 }
-.feedback-container{
+
+.feedback-container {
     width: 100%;
     padding: 10px;
     display: flex;
+    flex-direction: row;
     /* flex-wrap: wrap; */
-    overflow: scroll;
+    /* overflow: scroll; */
+    /* overflow-y: scroll; */
 
 }
-.feedback-card-container-newone-date-18-12-22{
+
+.NewOne {
+    width: 40%;
+    border: 1px solid red;
+    /* font-size: 100px; */
+    /* overflow: scroll; */
+}
+
+.NInnerOne {
+    border: 1px solid green;
+    width: 90%;
+    overflow-y: unset;
+    display: block;
+}
+
+.feedback-card-container-newone-date-18-12-22 {
     margin: 10px;
-    width: 250px;
+    width: 10%;
+    border: 1px solid red;
+
     border-radius: 10px;
-    padding:10px;
+    padding: 10px;
     box-shadow: 3px 2px 2px 2px #ccc;
 }
+
 .ImageBox {
     width: 50%
 }
