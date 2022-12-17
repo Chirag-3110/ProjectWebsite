@@ -33,9 +33,11 @@
     width: 100%;
     padding: 10px;
     display: flex;
+    /* flex-wrap: wrap; */
     overflow: scroll;
+
 }
-.feedback-card-container{
+.feedback-card-container-newone-date-18-12-22{
     margin: 10px;
     width: 250px;
     border-radius: 10px;

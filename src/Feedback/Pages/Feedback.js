@@ -89,9 +89,9 @@ function Feedback() {
                 {
                     allFeedback.length===0?null:
                     allFeedback.map((item)=>(
-                        <div className='feedback-card-container'>
+                        <div className='feedback-card-container-newone-date-18-12-22'>
                             <h3>{item.name}</h3>
-                            <h5>
+                            <h5 style={{width:'100%',fontSize:15}}>
                                 {item.feedback}
                             </h5>
                         </div>
