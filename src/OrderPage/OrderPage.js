@@ -15,6 +15,7 @@ function OrderPage() {
     useEffect(() => {
         getOrderData();
     }, [])
+
     const getOrderData = () => {
         let resultArray = [];
         let conditinoOne = where("UserUid", "==", userUid);

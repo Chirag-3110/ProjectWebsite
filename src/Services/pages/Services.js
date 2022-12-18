@@ -184,7 +184,7 @@ function About() {
                     </div>
                     <div>
                       <h3 className="h3">{item.name}</h3>
-                      <p className="para">{item.name} is the designed</p>
+                      <p className="para">{item.name}, that just the reality of your idea</p>
                       <button className="btn" onClick={() => { Updatename(item.name) }}>Book Now</button>
                     </div>
                   </div>
@@ -233,7 +233,10 @@ function About() {
                 </div>
                 <div className="TechDetails">
                   <TextField onChange={(event) => setProjectname(event.target.value)} id="outlined-basic" multiline label="Project Name" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
-                  <TextField onChange={(event) => setProjectexpect(event.target.value)} id="outlined-basic" multiline label="Project Expected duration (in months)" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
+                  <TextField onChange={(event) => setProjectexpect(event.target.value)} size="small" type='number' variant="outlined" label="Project Expected duration (in months)" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} inputProps={{
+                    maxLength: 2,
+                  }} />
+                  {/* <TextField onChange={(event) => setProjectexpect(event.target.value)} id="outlined-basic" multiline label="Project Expected duration (in months)" variant="outlined" size='small' inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} /> */}
                 </div>
                 <div className="TechDetails" style={{ justifyContent: "flex-start", marginLeft: "8%" }}>
                   <TextField onChange={(event) => setProjectPrice(event.target.value)} id="outlined-basic" multiline label="Project Price you are expecting" variant="outlined" size='small' color="warning" style={{ width: "38%", borderRadius: "10px", margin: "10px 2%", backgroundColor: "white" }} />
