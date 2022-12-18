@@ -1,3 +1,19 @@
+.JustTry {
+    border: 1px solid red;
+    width: 200px;
+    margin: 1% 1%;
+
+}
+
+.New1 {
+    display: flex;
+    flex-direction: row;
+    margin: 1% 1%;
+    width: 100%;
+    /* overflow-y: scroll; */
+    height: auto;
+}
+
 .Popper-div {
     margin: auto;
     width: auto;

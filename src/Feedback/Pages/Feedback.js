@@ -5,11 +5,18 @@ import Button from '@mui/material/Button';
 import feedbackImage from '../../Assets/feedbackImage.jpg'
 import './feedback.css';
 import { db } from "../../firebase";
+import Box from '@mui/material/Box';
 import { addDoc, collection, query, getDocs } from "firebase/firestore";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Card from '@mui/material/Card';
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
 function Feedback() {
+    let [loading, setLoading] = useState(true);
+    let [color, setColor] = useState("Orange");
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [feedback, setFeedback] = useState('');
@@ -85,23 +92,34 @@ function Feedback() {
                     />
                 </div>
             </div>
-            <div className='feedback-container'>
+            <div style={{ margin: "auto", width: "100%", borderTop: "4px solid Orange", marginTop: "5%", width: "80%" }}>
+                <h3 style={{ textAlign: "center", fontSize: "40px" }}>Valuable feedbacks</h3>
+            </div>
+            <Box display="flex" flex="1" margin="10px" width="99%" flexWrap="wrap" justifyContent="center">
                 {
-                    allFeedback.length === 0 ? null :
+                    allFeedback.length === 0 ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center", width: "100%", height: "100%", marginTop: "10%" }}>
+                        <ClimbingBoxLoader
+                            color={color}
+                            loading={loading}
+                            size={30}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </div> :
                         allFeedback.map((item) => (
-                            // <div className='feedback-card-container-newone-date-18-12-22'>
-                            //     <h3>{item.name}</h3>
-                            //     <h5 style={{ width: "80%", fontSize: 15 }}>
-                            //         {item.feedback}
-                            //     </h5>
-                            // </div>
-                            <div className='NewOne'>
-                                <h3>{item.name}</h3>
-                                <div className='NInnerOne'> {item.feedback}</div>
-                            </div>
+                            <Card sx={{ maxWidth: 345, width: "50%", border: "1px solid #FF7A00", margin: "10px", overflowX: "scroll" }}>
+                                <CardContent>
+                                    <Typography gutterBottom variant="h4" component="div">
+                                        {item.name}
+                                    </Typography>
+                                    <Typography variant="body1" color="text.secondary" sx={{ width: "100%" }}>
+                                        {item.feedback}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
                         ))
                 }
-            </div>
+            </Box>
             <ToastContainer />
         </>
     )
