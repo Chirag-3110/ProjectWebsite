@@ -7,7 +7,7 @@ import reviewpic from '../../Assets/reviewpic.png';
 import { ContextData } from '../../App';
 import HashLoader from "react-spinners/HashLoader";
 import HomePage from '../../Assets/HomePage.jpg';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function Home() {
   // where ever we want to user current authnticated user info
@@ -18,7 +18,7 @@ function Home() {
     console.log(userUid);
     setTimeout(() => {
       setbar(false)
-    }, 3000);
+    }, 1000);
   }, [])
   const logOut = () => {
     const auth = getAuth();
@@ -99,7 +99,9 @@ function Home() {
                 alt=''
               />
               <div className='query-buttons-div'>
-                <button className='query-button-1'>Contact Us</button>
+                <Link to={'contact'}>
+                  <button className='query-button-1'>Contact Us</button>
+                </Link>
                 <button className='query-button-2'>Mail Us</button>
               </div>
             </div>

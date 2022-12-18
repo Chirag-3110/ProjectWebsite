@@ -1,5 +1,6 @@
 import React from 'react';
-import '../css/Card.css'
+import '../css/Card.css';
+import { Link } from 'react-router-dom'
 const Card = (props) => {
     return (
         <div className='card-container'>
@@ -9,9 +10,11 @@ const Card = (props) => {
                 alt=''
             />
             <h3>Make your own {props.title}</h3>
-            <button className='card-button'>
-                Contact Now
-            </button>
+            <Link to={'service'}>
+                <button className='card-button'>
+                    Contact Now
+                </button>
+            </Link>
         </div>
     )
 }
