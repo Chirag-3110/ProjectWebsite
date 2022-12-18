@@ -1,71 +1,109 @@
 import React, { useState } from 'react'
 import './Auth.css'
-import AppLogo from '../Assets/AppLogo.png';
-import AuthImage from '../Assets/AuthImage.png';
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebase";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AppLogo from '../Assets/AppLogo.png';
+
 function ForgotPassword() {
-    const [email, setemail] = useState(null)
+    const [email, setemail] = useState('')
     const [Link, setLink] = useState(false)
     const ResetLink = async () => {
-        console.log(email)
-        console.log("hello")
+        if(Link)
+            return ;
         try {
+            if(email==='')
+                throw "Enter Email";
+            setLink(true);
             sendPasswordResetEmail(auth, email)
-                .then(() => {
-
-                    console.log("link sent successfully")
-                    setLink(true)
-                    setemail("")
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorCode)
-                    console.log(errorMessage)
+            .then(() => {
+                toast.success("link sent successfully (Also Check Spam)", {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    theme: "light",
                 });
+                setemail("")
+                setLink(false);
+            })
+            .catch((error) => {
+                switch (error.code) {
+                    case "auth/user-not-found":
+                        toast.error("User not Exists", {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: false,
+                            theme: "dark",
+                        });
+                        break;
+                    default:
+                        toast.error("SomeThing Went Wrong", {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: false,
+                            theme: "dark",
+                        });
+                        break;
+                }
+                setLink(false);
+            });
         } catch (error) {
-            console.log(error);
+            toast.error(error, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                theme: "dark",
+            });
+            setLink(false);
         }
     }
     return (
-        <div style={{ display: 'flex', alignItems: "center" }}>
-            <div className='main-container'>
-                <div className='title-container'>
-                    <img
-                        src={AppLogo}
-                        className='app-logo-image'
-                        alt=''
-                    />
-                    <h1>Welcome Back to</h1>
-                    <h1 style={{ color: "#FF7A00" }}>Project Hub</h1>
-                    <p className='page-title'>Please enter your email of Project Hub</p>
-                </div>
-                <div>
-                    <p className='input-label' style={{ marginTop: "-50%" }}>Email</p>
-                    <input className='custom-input' type={"text"} onChange={(event) => { setemail(event.target.value) }} /><br /><br />
-
-                    {
-                        Link ?
-
-                            <p style={{ color: "green", textAlign: "center", fontSize: "18px", fontWeight: "bolder" }}>***Link send successfully***</p> : null}
-                    <button className='custon-button' onClick={ResetLink}>Send Link</button>
-                </div>
-                {/* <div className='input-field-container'>
-                    <p className='input-label'>Email</p>
-                    <input className='custom-input' type={"text"} /><br></br>
-
-
-
-                    <button className='custon-button'>Login</button>
-                </div> */}
+        <div style={{ backgroundColor: "rgba(255, 147, 39, 0.407)"}}>
+            <div className='main-container_1'>
+                <img
+                    src={AppLogo}
+                    style={{width:200,height:200,borderRadius:10}}
+                />
+                <p className='page-title'>Please enter your email of Project Hub</p>
+                <input 
+                    style={{
+                        width:342,
+                        height:40,
+                        borderRadius:5,
+                        borderColor:"orange",
+                        fontWeight:"bold",
+                        paddingLeft:10
+                    }}
+                    type={"text"} 
+                    onChange={(event) => { setemail(event.target.value) }} 
+                    placeholder="Email"
+                />                   
+                <button 
+                    style={{
+                        width:350,
+                        height:40
+                    }}
+                    className='custon-button_1' 
+                    onClick={ResetLink}
+                >
+                    {Link?"Sending Email":'Send Link'}
+                </button>
             </div >
-            <img
-                src={AuthImage}
-                style={{ width: "40%" }}
-                alt=''
-            />
-        </div >
+            <ToastContainer />
+        </div>
     )
 }
 

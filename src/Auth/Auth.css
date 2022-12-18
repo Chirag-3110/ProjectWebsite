@@ -45,16 +45,31 @@
 .main-container1 {
     display: flex;
     flex-direction: column;
-    /* width: 400px; */
-    /* height: 90vh; */
     flex-wrap: wrap;
     align-items: center;
 }
-
+.main-container_1{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
 .AuthImage {
     width: 40%;
 }
-
+.custon-input_1{
+    width: 350px;
+    height: 40px;
+}
+.custon-button_1{
+    background-color: #FF7A00;
+    color: white;
+    border: 2px solid #f49237;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 10px;
+}
 @media screen and (min-width: 300px) and (max-width:700px) {
     .AuthImage {
         display: none;

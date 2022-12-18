@@ -4,8 +4,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { Link } from 'react-router-dom'
 import './Signup.css';
-import EmailValidate from "../validators/EmailValidation";
-import PasswordValidate from '../validators/PasswordValidation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [email, setemail] = useState('')
@@ -16,19 +16,20 @@ const Login = () => {
                 throw "Please enter Email";
             if(password==="")
                 throw "Please enter Password";
-            if(!EmailValidate(email)){
-                throw "Please enter a valid Email"
-            }
-            if(!PasswordValidate(password)){
-                throw "Please enter a valid Password (Must Contains Capital Letter,Special Character and a Number)"
-            }
-            newUser();
+            loginUser();
         } catch (error) {
-            console.log(error)
+            toast.error(error, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                theme: "dark",
+            });
         }
     }
-    const newUser = async () => {
-        console.log("use")
+    const loginUser = async () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
@@ -37,10 +38,26 @@ const Login = () => {
         .catch((error) => {
             switch (error.code) {
                 case "auth/user-not-found":
-                    console.log("Incorrect Email")
+                    toast.error('Incorrect Email', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        theme: "dark",
+                    });
                     break;
                 case "auth/wrong-password":
-                    console.log("Incorrect Password");
+                    toast.error('Incorrect Password', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        theme: "dark",
+                    });
                     break;
                 default:
                     break;
@@ -79,10 +96,10 @@ const Login = () => {
                         <input className='custom-input' type={"text"} onChange={(event) => setpassword(event.target.value)}
                             placeholder="Password"
                         />
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "90%" }}>
+                        {/* <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "90%" }}>
                             <input type={"checkbox"} className="check-box" />
                             <p className='input-label' >Remember Me</p>
-                        </div>
+                        </div> */}
                         <p className='input-label' >    
                             <Link style={{ textDecoration: "none", color: "black" }} to={'/ForgotPassword'}>
                                 Forgot Password ?
@@ -113,6 +130,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </>
     );
 

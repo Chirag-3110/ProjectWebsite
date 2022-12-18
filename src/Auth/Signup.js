@@ -8,6 +8,8 @@ import EmailValidate from "../validators/EmailValidation";
 import PasswordValidate from '../validators/PasswordValidation';
 import { useNavigate } from "react-router-dom";
 import './Signup.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup=()=>{
     const [userName,setUserName]=useState('');
@@ -30,7 +32,15 @@ const Signup=()=>{
             }
             createNewUser();
         } catch (error) {
-            console.log(error)
+            toast.error(error, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                theme: "dark",
+            });
         }
     }
     const createNewUser = async () => {
@@ -41,16 +51,31 @@ const Signup=()=>{
             setDoc(userRef,{
                 name:userName,
                 email:email
-            }).then(()=>{
-                console.log(user.uid)
-                
-                navigate("/");
-            });
+            })
+            .catch((e)=>{
+                toast.error('Something Went Wrong', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    theme: "dark",
+                });
+            })
         })
         .catch((error) => {
             switch (error.code) {
                 case "auth/email-already-in-use":
-                    console.log("Email Already Exists")
+                    toast.error("Email Already Exists", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        theme: "dark",
+                    });
                     break;
                 default:
                     break;
@@ -80,7 +105,7 @@ const Signup=()=>{
                         <p className='page-title'>Please SignUp to enter Project Hub</p>
                     </div>
                     <div className='input-field-container'>
-                        <p className='input-label'>Email</p>
+                        <p className='input-label'>Username</p>
                         <input className='custom-input' type={"text"} onChange={(event) => setUserName(event.target.value) } 
                             placeholder="UserName"
                         
@@ -123,6 +148,7 @@ const Signup=()=>{
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </>
     );
 

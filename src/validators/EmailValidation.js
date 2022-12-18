@@ -1,6 +1,8 @@
 const EmailValidate=(email)=>{
-    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if(!email.match(validRegex) || !email.includes("gmail.com")){
+    if(email.match(/\s/)){
+        return false;
+    }
+    if(!email.includes("gmail.com")){
         return  false
     }
     return true
